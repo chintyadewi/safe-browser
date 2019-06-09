@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Safe Browser",
+  "version": "1.0",
+
+  "description": "Block url that can't access by children and organize by their parents",
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["blocker.js"]
+    }
+  ]
+}
