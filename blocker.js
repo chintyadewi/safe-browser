@@ -7,7 +7,7 @@ var time =
 
 if (url == "https://www.wikipedia.org/") {
   console.log(url, date + " " + time);
-  // jika kirim file berhasil, maka redirect ke halaman yng sudah ditentukan
+  // change url
   url = "https://www.mozilla.org/en-US";
   window.location = url;
 } else {
