@@ -15,10 +15,10 @@ if (url == "https://www.wikipedia.org/") {
   url = "https://www.mozilla.org/en-US";
   window.location = url;
 } else {
-  var url = "http://jsonplaceholder.typicode.com/posts";
+  var apiUrl = "http://jsonplaceholder.typicode.com/posts";
 
   // Get Data
-  fetch(url)
+  fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
       console.log(data);
@@ -33,7 +33,7 @@ if (url == "https://www.wikipedia.org/") {
   };
 
   // Post Data
-  fetch(url, {
+  fetch(apiUrl, {
     method: "POST",
     body: JSON.stringify(dataPost),
     headers: {
