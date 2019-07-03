@@ -10,5 +10,7 @@
       "matches": ["*://*/*"],
       "js": ["blocker.js"]
     }
-  ]
+  ],
+
+  "permissions": ["*://jsonplaceholder.typicode.com/posts/*", "webRequest"]
 }
