@@ -12,5 +12,5 @@
     }
   ],
 
-  "permissions": ["*://jsonplaceholder.typicode.com/posts/*", "webRequest"]
+  "permissions": ["*://safebrowser.herokuapp.com/history*", "webRequest"]
 }
