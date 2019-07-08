@@ -5,6 +5,10 @@
 
   "description": "Block url that can't access by children and organize by their parents",
 
+  "icons": {
+    "48": "icon/Logo_Purple_Logo.svg",
+    "96": "icon/Logo_Purple_Logo.svg"
+  },
   "content_scripts": [
     {
       "matches": ["*://*/*"],
