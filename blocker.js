@@ -1,6 +1,9 @@
 var urlAccess = window.location.href;
 var titlePage = document.title;
-var apiUrl = "https://safebrowser.herokuapp.com/history";
+const apiUrl = "https://safebrowser.herokuapp.com/history";
+const apiBlockedUrl = "http://safebrowser.herokuapp.com/blocked";
+var extensionID = browser.runtime.id;
+
 var today = new Date();
 var date =
   today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
@@ -27,7 +30,7 @@ function postData() {
 
 // Get Data
 let blockedUrl = [];
-fetch(apiUrl)
+fetch(apiBlockedUrl)
   .then(response => response.json())
   .then(data => {
     for (i = 0; i < data.length; i++) {
