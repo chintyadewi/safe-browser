@@ -1,20 +1,21 @@
 var urlAccess = window.location.href;
 var titlePage = document.title;
 const apiUrl = "https://safebrowser.herokuapp.com/history";
-const apiBlockedUrl = "http://safebrowser.herokuapp.com/blocked";
+const apiBlockedUrl = "https://safebrowser.herokuapp.com/blocked";
 var extensionID = browser.runtime.id;
 
-var today = new Date();
-var date =
-  today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-var time =
-  today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+// var today = new Date();
+// var date =
+//   today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+// var time =
+//   today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
 function postData() {
   // Post Data
   var dataPost = {
     title: titlePage,
-    url: urlAccess
+    url: urlAccess,
+    pluginCode: extensionID
   };
   fetch(apiUrl, {
     method: "POST",
@@ -24,24 +25,23 @@ function postData() {
     }
   })
     .then(res => res.json())
-    .then(response => console.log("Success:", JSON.stringify(response)))
+    .then()
     .catch(error => console.error("Error:", error));
 }
 
 // Get Data
 let blockedUrl = [];
-fetch(apiBlockedUrl)
+fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
     for (i = 0; i < data.length; i++) {
       blockedUrl.push(data[i].url);
     }
-
     if (blockedUrl.indexOf(urlAccess) != -1) {
-      // postData();
+      postData();
       window.location.href = "https://safebrowser.herokuapp.com";
     } else {
-      // postData();
+      postData();
     }
   })
   .catch(error => console.error(error));

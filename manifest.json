@@ -18,5 +18,5 @@
   "options_ui": {
     "page": "qrCode.html"
   },
-  "permissions": ["*://safebrowser.herokuapp.com/history*", "webRequest"]
+  "permissions": ["*://safebrowser.herokuapp.com/*", "webRequest"]
 }
