@@ -37,11 +37,17 @@ fetch(apiUrl)
     for (i = 0; i < data.length; i++) {
       blockedUrl.push(data[i].url);
     }
-    if (blockedUrl.indexOf(urlAccess) != -1) {
-      postData();
-      window.location.href = "https://safebrowser.herokuapp.com";
-    } else {
-      postData();
+
+    for (let j = 0; j < blockedUrl.length; j++) {
+      if (
+        (blockedUrl[j].url == urlAccess) != -1 &&
+        blockedUrl[j].pluginCode == extensionID
+      ) {
+        postData();
+        window.location.href = "https://safebrowser.herokuapp.com";
+      } else {
+        postData();
+      }
     }
   })
   .catch(error => console.error(error));
