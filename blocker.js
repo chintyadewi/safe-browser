@@ -30,24 +30,40 @@ function postData() {
 }
 
 // Get Data
-let blockedUrl = [];
-fetch(apiUrl)
+//let blockedUrl = [];
+fetch(apiBlockedUrl)
   .then(response => response.json())
   .then(data => {
-    for (i = 0; i < data.length; i++) {
-      blockedUrl.push(data[i].url);
+    // for (i = 0; i < data.length; i++) {
+    //   blockedUrl.push(data[i]);
+    // }
+
+    console.log(data);
+
+
+    let ketemu = false;
+    for (let j = 0; j < data.length; j++) {
+      if (
+        (data[j].url === urlAccess) &&
+        data[j].pluginCode === extensionID
+      ) {
+        ketemu = true;
+        //postData();
+        //window.location.href = "https://safebrowser.herokuapp.com";
+        break;
+      } else {
+        //postData();
+        ketemu = false;
+      }
     }
 
-    for (let j = 0; j < blockedUrl.length; j++) {
-      if (
-        (blockedUrl[j].url == urlAccess) != -1 &&
-        blockedUrl[j].pluginCode == extensionID
-      ) {
-        postData();
-        window.location.href = "https://safebrowser.herokuapp.com";
-      } else {
-        postData();
-      }
+    if (ketemu) {
+      postData();
+      console.log(ketemu);
+      window.location.href = "https://safebrowser.herokuapp.com";
+    } else {
+      console.log(ketemu);
+      postData();
     }
   })
   .catch(error => console.error(error));
